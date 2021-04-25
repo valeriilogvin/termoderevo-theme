@@ -16,7 +16,7 @@
 					<stop offset="1" stop-color="#FFDDA2"/>
 					</linearGradient>
 					</defs>
-					</svg>
+                </svg>
 			</a>
 		</div>
 		<div class="about__info arl _anim-items _anim-off">
