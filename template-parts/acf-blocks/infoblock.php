@@ -11,9 +11,10 @@ $types         = get_sub_field( 'infoblock_types' );
 $installation  = get_sub_field( 'infoblock_installation' );
 $gallery       = get_sub_field( 'infoblock_gallery' );
 $btnId         = get_sub_field( 'infoblock_btn_id' );
+$anchor_id         = get_sub_field( 'infoblock_anchor_id' );
 ?>
 
-<section class="comprehensive <?php echo $right ?>" id="comprehensive">
+<section class="comprehensive <?php echo $right ?>" id="<?php echo $anchor_id ?>">
     <div class="container">
 
 		<?php
@@ -34,6 +35,9 @@ $btnId         = get_sub_field( 'infoblock_btn_id' );
                 alr _anim-items _anim-off
 
             <?php endif ?>
+
+            <?php echo $right ?>
+
         ">
             <div class="infoblock__slides">
 
