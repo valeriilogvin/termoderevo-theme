@@ -1,4 +1,3 @@
-
 /* Jquery */
 $(document).ready(function () {
     // burger 
@@ -9,6 +8,7 @@ $(document).ready(function () {
     // $('.burger, .navbar__center').click(function () {
     //     $('.burger, .navbar__center').removeClass('active');
     // });
+
     // navmenu on scroll
     $(window).scroll(function () {
         if (this.scrollY > 40) {
@@ -19,6 +19,7 @@ $(document).ready(function () {
     });
     // lightgallery
     lightGallery(document.querySelector('.lifestyle__photos'));
+
     // slick-sliders
     $('.infoblock__slider').slick({
         slidesToShow: 1,
@@ -143,18 +144,18 @@ $(document).ready(function () {
     $('.infoblock__btn, .nav__btn').on('click', function () {
         $('.overlay, #consultation').fadeIn('slow');
     });
-    $('.modal__close').on('click', function () {
+    $('.modal__close, .overlay').on('click', function () {
         $('.overlay, #consultation, #thanks').fadeOut('slow');
     });
 
     // для вывода окна "подтверждение заявки"
-    $('form').submit(function (e) {
-        e.preventDefault();/* отключаем перезагрузку страницы */
-        $(this).find("input").val("");
-        $('#consultation').fadeOut();
-        $('.overlay, #thanks').fadeIn('slow');
-        $('form').trigger('reset');
-    });
+    // $('form').submit(function (e) {
+    //     e.preventDefault();/* отключаем перезагрузку страницы */
+    //     $(this).find("input").val("");
+    //     $('#consultation').fadeOut();
+    //     $('.overlay, #thanks').fadeIn('slow');
+    //     $('form').trigger('reset');
+    // });
     // mailer
     //   $('form').submit(function (e) {
     //     e.preventDefault();/* отключаем перезагрузку страницы */
@@ -178,13 +179,14 @@ $(document).ready(function () {
     // плавная прокрутка
     $("a[href]").click(function () {
         const _href = $(this).attr("href");
-        $("html, body").animate({ scrollTop: $(_href).offset().top + "px" });
+        $("html, body").animate({scrollTop: $(_href).offset().top + "px"});
         return false;
     });
     // Animations
     const animItems = document.querySelectorAll('._anim-items');
     if (animItems.length > 0) {
         window.addEventListener('scroll', animOnScroll);
+
         function animOnScroll() {
             for (let index = 0; index < animItems.length; index++) {
                 const animItem = animItems[index];
@@ -206,6 +208,7 @@ $(document).ready(function () {
                 }
             }
         }
+
         function offset(el) {
             const rect = el.getBoundingClientRect(),
                 scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
@@ -215,8 +218,14 @@ $(document).ready(function () {
                 left: rect.left + scrollLeft
             }
         }
+
         setTimeout(() => {
             animOnScroll();
         }, 300);
     }
 });
+
+// redirect on page-thanks
+document.addEventListener('wpcf7mailsent', function (event) {
+    window.location = window.location.hostname + '/thanks'
+}, false);

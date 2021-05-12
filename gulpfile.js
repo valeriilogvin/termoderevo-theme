@@ -41,6 +41,7 @@ let path = {
 gulp.task("css:build", function() {
     return gulp.src(path.src.css)
         .pipe(sass().on('error', sass.logError))
+        .pipe(cssnano())
         .pipe(preFixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest(path.build.css))
