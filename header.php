@@ -102,8 +102,8 @@
                     <li class="navbar__item">
                         <a href="#about">О нас</a>
                     </li>
-                    <li class="navbar__item">
-                        <a href="#comprehensive">Комплекс</a>
+                    <li class="navbar__item js_navbar_parent">
+                        <a>Комплекс</a>
 
                         <ul class="navbar__submenu">
                             <li><a class="navbar__subitem" href="#stena">Стеновые панели</a></li>

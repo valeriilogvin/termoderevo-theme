@@ -36,6 +36,13 @@
     margin-right: 80px;
     position: relative;
 
+    &.active{
+      .navbar__submenu{
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
     a{
       font-weight: 500;
       font-size: 1.8rem;
@@ -85,6 +92,12 @@
 
     @media (max-width:1024px) {
       display: none;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      position: static;
+      background: none;
+      padding: 15px 0;
     }
 
     li {

@@ -5,9 +5,39 @@ $(document).ready(function () {
     $('.burger').click(function () {
         $('.burger, .navbar__center').toggleClass('active');
     });
-    // $('.burger, .navbar__center').click(function () {
-    //     $('.burger, .navbar__center').removeClass('active');
-    // });
+
+    $('.navbar__item:not(.js_navbar_parent) a').on('click', function () {
+        $('.burger, .navbar__center').removeClass('active');
+    });
+
+    if (window.matchMedia('(max-width: 1024px)').matches) {
+        $('.js_navbar_parent').on('click', function () {
+            let $this = $(this);
+
+            $this.toggleClass('active');
+
+            $('.navbar__submenu').slideToggle()
+        })
+
+        $('.navbar__submenu a').on('click', function () {
+            let $this = $(this);
+
+            $('.burger, .navbar__center').removeClass('active');
+            $this.closest('.navbar__submenu').slideToggle()
+        });
+    } else {
+        $('.js_navbar_parent').on('click', function () {
+            let $this = $(this);
+
+            $this.toggleClass('active')
+        })
+
+        $('.navbar__submenu a').on('click', function () {
+            let $this = $(this);
+
+            $this.closest('.js_navbar_parent').removeClass('active')
+        })
+    }
 
     // navmenu on scroll
     $(window).scroll(function () {
@@ -17,6 +47,7 @@ $(document).ready(function () {
             $('.navbar').removeClass('sticky');
         }
     });
+
     // lightgallery
     lightGallery(document.querySelector('.lifestyle__photos'));
 
@@ -64,18 +95,7 @@ $(document).ready(function () {
             }
         ]
     });
-    // const allSlides = [...document.querySelectorAll('.companies__slide')];
-    // const centerSlide = document.querySelector('.companies__slide.slick-center');
-    // let leftSlide;
-    // let rightSlide;
-    // const activeSlideIndex = allSlides.indexOf(centerSlide);
-    // function neighbors() {
-    //     rightSlide = allSlides[(activeSlideIndex + 1) % allSlides.length];
-    //     // leftSlide = allSlides[(activeSlideIndex - 1) % allSlides.length];
-    //     rightSlide.classList.add('rslide');
-    //     // leftSlide.classList.add('lslide');
-    // }
-    // neighbors();
+
     $('.warranty__slider').slick({
         infinite: true,
         dots: false,
@@ -124,6 +144,7 @@ $(document).ready(function () {
         prevArrow: '<button type="button" class="my-slick-prev"></button>',
         nextArrow: '<button type="button" class="my-slick-next"></button>',
     });
+
     // tabs
     $('.infoblock__tab').on('click', function () {
         let thisTabIndex = $(this).attr('data-tab'),
@@ -138,7 +159,6 @@ $(document).ready(function () {
             .addClass('active')
             .siblings().removeClass('active');
     });
-    // modal
 
     // header btns
     $('.infoblock__btn, .nav__btn').on('click', function () {
@@ -148,40 +168,18 @@ $(document).ready(function () {
         $('.overlay, #consultation, #thanks').fadeOut('slow');
     });
 
-    // для вывода окна "подтверждение заявки"
-    // $('form').submit(function (e) {
-    //     e.preventDefault();/* отключаем перезагрузку страницы */
-    //     $(this).find("input").val("");
-    //     $('#consultation').fadeOut();
-    //     $('.overlay, #thanks').fadeIn('slow');
-    //     $('form').trigger('reset');
-    // });
-    // mailer
-    //   $('form').submit(function (e) {
-    //     e.preventDefault();/* отключаем перезагрузку страницы */
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "mailer/smart.php",
-    //         data: $(this).serialize()
-    //     }).done(function () {
-    //         $(this).find("input").val("");
-    //         $('#consultation').fadeOut();
-    //         $('.overlay, #thanks').fadeIn('slow');
-
-    //         $('form').trigger('reset');
-    //     });
-    //     return false;
-    // });
     // маска телефон
     let inputs = document.querySelectorAll('input[type="tel"]');
     let im = new Inputmask('+38(999) 999-99-99');
     im.mask(inputs);
+
     // плавная прокрутка
     $("a[href]").click(function () {
         const _href = $(this).attr("href");
         $("html, body").animate({scrollTop: $(_href).offset().top + "px"});
         return false;
     });
+
     // Animations
     const animItems = document.querySelectorAll('._anim-items');
     if (animItems.length > 0) {
