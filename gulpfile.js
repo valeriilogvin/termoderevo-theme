@@ -14,25 +14,30 @@ let gulp         = require("gulp"),
     cache        = require('gulp-cache'),
     reload       = browserSync.reload;
 
-
+// пути к файлам
 let path = {
 
-    build: {
+    build: {  // куда будет складывать готовые файлы после зборки
         css: "./css",
         js: "./js",
     },
     src: {
-        css: "./scss/main.scss",
-        cssLibs: "./libs/css/**/*.css",
-        jsLibs: "./libs/js/**/*.js",
+        css: "scss/*.scss",
+        cssLibs: "scss/libs/**/*.css",
+        jsLibs: "js/libs/**/*.js",
     },
-    watch: {
-        css: "./scss/**/*.scss",
-        cssLibs: "./libs/css/**/*.css",
-        jsLibs: "./libs/js/**/*.js",
+    watch: {  //  пути к файлам, за которыми будем следить
+        html: "./**/*.html",
+        php: "./**/*.php",
+        css: "scss/**/*.scss",
+        cssLibs: "scss/libs/**/*.css",
+        js: "js/*.js",
+        jsLibs: "js/libs/**/*.js",
+        fonts: "fonts/**/*.woff"
     }
 };
 
+// сборка css
 gulp.task("css:build", function() {
     return gulp.src(path.src.css)
         .pipe(sass().on('error', sass.logError))
@@ -43,39 +48,57 @@ gulp.task("css:build", function() {
         .pipe(reload({stream: true}));
 });
 
-gulp.task("js-libs:min", function() {
+// сборка js-библиотек
+gulp.task("js.min", function() {
     return gulp.src(path.src.jsLibs)
         .pipe(concat('libs.min.js')) // Собираем их в кучу в новом файле libs.min.js
         .pipe(uglify()) // Сжимаем JS файл
         .pipe(gulp.dest(path.build.js)) // Выгружаем в папку build/js
 });
 
-gulp.task("css-libs:min", function() {
+gulp.task("css.min", function() {
     return gulp.src(path.src.cssLibs)
-        .pipe(cssnano()) // Сжимаем
+        .pipe(cssNano()) // Сжимаем
         .pipe(concat('libs.min.css')) // Собираем их в кучу в новом файле libs.min.css
         .pipe(gulp.dest(path.build.css)) // Выгружаем в папку build/css
-        .pipe(reload({stream: true})); // Обновляем css на странице при изменении
+        // .pipe(reload({stream: true})); // Обновляем css на странице при изменении
 });
 
+// таск для сборки
 gulp.task("build",
     gulp.parallel(
+        // "html:build",
         "css:build",
-        "css-libs:min",
-        "js-libs:min",
+        // "css.min",
+        // "js:build",
+        // "fonts:build",
+        // "cssLibs:build",
+        // "jsLibs:build"
     )
 );
+
+// Static server
+gulp.task('webserver', function() {
+    browserSync.init({ // Выполняем browserSync
+        proxy: 'local-koreauto4u.com.ua',
+        notify: false // Отключаем уведомления
+    })
+});
 
 // следим за изменениями
 gulp.task('watch' , function () {
     gulp.watch([path.watch.css], { usePolling: true }, gulp.parallel('css:build'));
-    gulp.watch([path.watch.cssLibs], { usePolling: true }, gulp.parallel('css-libs:min'));
-    gulp.watch([path.watch.jsLibs], { usePolling: true }, gulp.parallel('js-libs:min'));
+    gulp.watch([path.watch.cssLibs], { usePolling: true }, gulp.parallel('css.min'));
+    // gulp.watch([path.watch.php], { usePolling: true }).on('change', reload);
+    // gulp.watch([path.watch.fonts], { usePolling: true }, gulp.parallel('fonts:build'));
     // gulp.watch([path.watch.js], { usePolling: true }).on('change', reload);
+    // gulp.watch([path.watch.jsLibs], { usePolling: true }, gulp.parallel('jsLibs:build'));
+    // gulp.watch([path.watch.cssLibs], { usePolling: true }, gulp.parallel('cssLibs:build'));
+    // gulp.watch('src/img/**/*', { usePolling: true }, gulp.parallel('img'));
 });
 
 
 
 // дефолтный таск
 // gulp.task('default', gulp.parallel("clean","img","build", "css.min", "js.min", "webserver","watch"));
-gulp.task('default', gulp.parallel("build", "watch"));
+gulp.task('default', gulp.parallel("build", /*"webserver", */"watch"));

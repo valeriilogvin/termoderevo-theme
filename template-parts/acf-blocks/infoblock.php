@@ -68,7 +68,7 @@ $anchor_id         = get_sub_field( 'infoblock_anchor_id' );
                         Описание
                     </div>
                     <div data-tab="1" class="infoblock__tab">
-                        Виды панелей
+                        Виды
                     </div>
                     <div data-tab="2" class="infoblock__tab">
                         Монтаж и обслуживание
@@ -88,7 +88,7 @@ $anchor_id         = get_sub_field( 'infoblock_anchor_id' );
                 <div class="infoblock__footer">
                     <div class="infoblock__footer_text">Закажите бесплатную консультацию специалиста прямо на объекте
                     </div>
-                    <button id="<?php echo $btnId?>" class="btn infoblock__btn">Получить консультацию</button>
+                    <button id="<?php echo $btnId?>" data-modal="modal-form" class="btn infoblock__btn md-trigger">Получить консультацию</button>
                 </div>
             </div>
         </div>

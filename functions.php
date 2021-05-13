@@ -59,6 +59,13 @@ function wood_scripts() {
 		'1.0',
 		true
 	);
+    wp_enqueue_script(
+        'wood-lg-lightgallery-migrate',
+        '//code.jquery.com/jquery-migrate-1.2.1.min.js',
+        array(),
+        '1.0',
+        true
+    );
 	wp_enqueue_script(
 		'wood-lg-lightgallery',
 		'https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js',
@@ -67,11 +74,18 @@ function wood_scripts() {
 		true
 	);
 	wp_enqueue_script(
-		'wood-lg-lightgallery',
-		'//code.jquery.com/jquery-migrate-1.2.1.min.js',
-		array(),
-		'1.0',
-		true
+		'wood-classie',
+        get_template_directory_uri() . '/js/classie.js',
+        array(),
+        '1.0',
+        true
+	);
+	wp_enqueue_script(
+		'wood-modal',
+        get_template_directory_uri() . '/js/modalEffects.js',
+        array(),
+        '1.0',
+        true
 	);
 	wp_enqueue_script(
 		'wood-mainJs',

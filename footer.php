@@ -56,7 +56,10 @@
                     <div class="footer__form_title">Остались вопросы?</div>
                     <div class="footer__form_subtitle">Заполните форму ниже<br>
                         и получите бесплатную консультацию специалиста</div>
-                    <script>!function(a,m,o,c,r,m){a[o+c]=a[o+c]||{setMeta:function(p){this.params=(this.params||[]).concat([p])}},a[o+r]=a[o+r]||function(f){a[o+r].f=(a[o+r].f||[]).concat([f])},a[o+r]({id:"763042",hash:"082b55837b3f231f6bb043caa579e4ac",locale:"ru"})}(window,0,"amo_forms_","params","load");</script><script id="amoforms_script_763042" async="async" charset="utf-8" src="https://forms.amocrm.ru/forms/assets/js/amoforms.js?1617735119"></script>
+<!--                    <script>!function(a,m,o,c,r,m){a[o+c]=a[o+c]||{setMeta:function(p){this.params=(this.params||[]).concat([p])}},a[o+r]=a[o+r]||function(f){a[o+r].f=(a[o+r].f||[]).concat([f])},a[o+r]({id:"763042",hash:"082b55837b3f231f6bb043caa579e4ac",locale:"ru"})}(window,0,"amo_forms_","params","load");</script><script id="amoforms_script_763042" async="async" charset="utf-8" src="https://forms.amocrm.ru/forms/assets/js/amoforms.js?1617735119"></script>-->
+
+                    <?php echo do_shortcode(' [contact-form-7 id="171" title="Получить предложение" html_class="use-floating-validation-tip form"] ') ?>
+
 
 <!--                    <form class="form">-->
 <!--                        <input class="formname" name="name" type="text" placeholder="Ваше имя" id="name">-->
@@ -69,32 +72,10 @@
             </div>
         </div>
     </section>
-    <div class="overlay">
-        <div class="modal" id="consultation">
-            <div class="header__form">
-                <div class="modal__logo"><img src="<?php echo get_stylesheet_directory_uri() ?>/img/modallogo.svg" alt="modallogo"></div>
-                <div class="header__form_title">У вас есть идея или фотография
-                    объекта который хотите реализовать?</div>
-                <div class="header__form_subtitle">Заполните форму ниже<br>
-                    и получите бесплатную консультацию специалиста</div>
 
-                <script>!function(a,m,o,c,r,m){a[o+c]=a[o+c]||{setMeta:function(p){this.params=(this.params||[]).concat([p])}},a[o+r]=a[o+r]||function(f){a[o+r].f=(a[o+r].f||[]).concat([f])},a[o+r]({id:"763048",hash:"731fdd6a2afd2d5db3b63ca912a23e06",locale:"ru"})}(window,0,"amo_forms_","params","load");</script><script id="amoforms_script_763048" async="async" charset="utf-8" src="https://forms.amocrm.ru/forms/assets/js/amoforms.js?1617736173"></script>
-<!--                <form class="form">-->
-<!--                    <input class="formname" name="name" type="text" placeholder="Ваше имя" id="name">-->
-<!--                    <input class="formphone" name="phone" type="tel" placeholder="Ваш телефон" id="phone">-->
-<!--                    <button class="btn form__btn">-->
-<!--                        Получить консультацию-->
-<!--                    </button>-->
-<!--                </form>-->
-            </div>
-            <div class="modal__close">&times;</div>
-        </div>
-        <div class="modal modal_mini" id="thanks">
-            <div class="modal__close">&times;</div>
-            <div class="modal__subtitle">Спасибо за Вашу заявку!</div>
-            <div class="modal__descr">Наш менеджер свяжется с вами в ближайшее время!</div>
-        </div>
-    </div>
+    <!-- modals -->
+    <?php get_template_part( 'template-parts/modal' ); ?>
+
 
 </div> <!-- <div class="page"> -->
 <?php wp_footer(); ?>

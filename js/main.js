@@ -8,6 +8,7 @@ $(document).ready(function () {
     // $('.burger, .navbar__center').click(function () {
     //     $('.burger, .navbar__center').removeClass('active');
     // });
+
     // navmenu on scroll
     $(window).scroll(function () {
         if (this.scrollY > 40) {
@@ -18,6 +19,7 @@ $(document).ready(function () {
     });
     // lightgallery
     lightGallery(document.querySelector('.lifestyle__photos'));
+
     // slick-sliders
     $('.infoblock__slider').slick({
         slidesToShow: 1,
@@ -222,3 +224,8 @@ $(document).ready(function () {
         }, 300);
     }
 });
+
+// redirect on page-thanks
+document.addEventListener('wpcf7mailsent', function (event) {
+    window.location = window.location.hostname + '/thanks'
+}, false);

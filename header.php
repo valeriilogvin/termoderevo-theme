@@ -150,7 +150,7 @@
                 </div>
             </div>
 
-            <button id="header_btn" class="btn nav__btn"><span>Получить консультацию</span></button>
+            <button id="header_btn" data-modal="modal-form" class="btn md-trigger"><span>Получить консультацию</span></button>
             <div class="burger">
                 <span></span>
             </div>

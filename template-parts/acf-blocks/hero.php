@@ -72,9 +72,10 @@
 			<div class="header__form">
 				<div class="header__form_title"><?php echo $hero_form_title?></div>
 				<div class="header__form_subtitle"><?php echo $hero_form_subtitle;?></div>
-                <script>!function(a,m,o,c,r,m){a[o+c]=a[o+c]||{setMeta:function(p){this.params=(this.params||[]).concat([p])}},a[o+r]=a[o+r]||function(f){a[o+r].f=(a[o+r].f||[]).concat([f])},a[o+r]({id:"763012",hash:"341c27ae446364433cf0bd46d9e29aae",locale:"ru"})}(window,0,"amo_forms_","params","load");</script><script id="amoforms_script_763012" async="async" charset="utf-8" src="https://forms.amocrm.ru/forms/assets/js/amoforms.js?1617732191"></script>
+<!--                <script>!function(a,m,o,c,r,m){a[o+c]=a[o+c]||{setMeta:function(p){this.params=(this.params||[]).concat([p])}},a[o+r]=a[o+r]||function(f){a[o+r].f=(a[o+r].f||[]).concat([f])},a[o+r]({id:"763012",hash:"341c27ae446364433cf0bd46d9e29aae",locale:"ru"})}(window,0,"amo_forms_","params","load");</script><script id="amoforms_script_763012" async="async" charset="utf-8" src="https://forms.amocrm.ru/forms/assets/js/amoforms.js?1617732191"></script>-->
                 <!--				--><?php //echo do_shortcode( '[amocrm id="762988" hash="f7a483629027d8157a1108a064d4a7e0" locale="ru"]' ); ?>
 
+                <?php echo do_shortcode(' [contact-form-7 id="171" title="Получить предложение" html_class="use-floating-validation-tip form"] ') ?>
 
 <!--				<form class="form">-->
 <!--					<input class="formname" name="name" type="text" placeholder="Ваше имя" id="name">-->
