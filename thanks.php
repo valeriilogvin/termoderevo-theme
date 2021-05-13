@@ -11,7 +11,7 @@ Template Name: Page thanks
 	<meta name="viewport"
 	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Korea</title>
+	<title>Термодерево ТМ</title>
 
     <?php wp_head(); ?>
 
@@ -173,7 +173,7 @@ Template Name: Page thanks
 <script>
     setTimeout(() => {
         window.location = '<?php echo home_url(); ?>';
-    }, 10000)
+    }, 5000)
 </script>
 
 </body>
