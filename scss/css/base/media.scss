@@ -426,7 +426,9 @@
         }
         &__item {
             margin-right: 20px;
-            font-size: 1.6rem;
+            a{
+                font-size: 1.6rem;
+            }
         }
         &__center {
             margin: 0 0 0 50px;
